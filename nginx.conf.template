@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    server_name _;
+
+location / {
+    proxy_pass ${PROXY_PASS};
+    proxy_set_header Accept-Encoding "";
+    sub_filter
+    '</head>'
+    '<link rel="stylesheet" type="text/css" href="${CSS_THEME}">
+    </head>';
+    sub_filter_once on;
+  }
+}
